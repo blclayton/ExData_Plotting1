@@ -1,4 +1,4 @@
-## Introduction
+## Introduction 
 
 This assignment uses data from
 the <a href="http://archive.ics.uci.edu/ml/">UC Irvine Machine
@@ -35,11 +35,7 @@ web site</a>:
 
 ## Loading the data
 
-
-
-
-
-When loading the dataset into R, please consider the following:
+When loading the dataset into R, the following should be considered:
 
 * The dataset has 2,075,259 rows and 9 columns. First
 calculate a rough estimate of how much memory the dataset will require
@@ -61,54 +57,88 @@ functions.
 ## Making Plots
 
 Our overall goal here is simply to examine how household energy usage
-varies over a 2-day period in February, 2007. Your task is to
-reconstruct the following plots below, all of which were constructed
+varies over a 2-day period in February, 2007. The following 
+plots were used in this analysis, all of which were constructed
 using the base plotting system.
 
-First you will need to fork and clone the following GitHub repository:
-[https://github.com/rdpeng/ExData_Plotting1](https://github.com/rdpeng/ExData_Plotting1)
 
+In this repository: 
 
-For each plot you should
-
-* Construct the plot and save it to a PNG file with a width of 480
+* 4 plots constructed to spec and saved to a PNG file with a width of 480
 pixels and a height of 480 pixels.
 
 * Name each of the plot files as `plot1.png`, `plot2.png`, etc.
 
-* Create a separate R code file (`plot1.R`, `plot2.R`, etc.) that
-constructs the corresponding plot, i.e. code in `plot1.R` constructs
-the `plot1.png` plot. Your code file **should include code for reading
-the data** so that the plot can be fully reproduced. You should also
-include the code that creates the PNG file.
-
-* Add the PNG file and R code file to your git repository
-
-When you are finished with the assignment, push your git repository to
-GitHub so that the GitHub version of your repository is up to
-date. There should be four PNG files and four R code files.
+* R code file (`plot1.R`, `plot2.R`, etc.) that constructs the corresponding plot, i.e. code in `plot1.R` constructs
+the `plot1.png` plot. The code file includes code for reading the data and so that the plot can be fully reproduced. 
+Each R file includes the code that creates the PNG file.
 
 
-The four plots that you will need to construct are shown below. 
 
 
-### Plot 1
 
+Static images of the four plots constructed as well as the goal and questions
+from the analysis are shown below. 
+
+### Plot 1 - Histogram of Global Active Power usage
+
+Goal: examine use of household energy for two days in Feb 2007 to understand the Global active power usage.  
+Questions:
+* Which kilowatt level is most frequent?  
+
+* Which kilowatt level is the next most frequent?
+
+* How frequent is the use of kilowatt level above 4?
 
 ![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
 
 
-### Plot 2
+### Plot 2 - Global Active Power over date/time
+
+Goal: examine use of household energy for two days in Feb 2007 with a focus on usage of the global active power over date/time.
+
+Questions:
+
+* How often does global active power usage spike over 6kw in a day?
+
+* Is global active power usage similiar over the 2 days?
+
+* How often is global active power under 2kw in a day?
 
 ![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
 
 
-### Plot 3
+### Plot 3 - Sub metering 1,2,3 over date/time
+
+Goal: examine use of household energy for two days in Feb 2007 with focus on the sub metering.  
+
+Questions:
+
+* Which of the 3 types of household components has the highest usage over a day?
+
+* Is the usage of the 3 types of household components similar over both days?
+
+* Which of the 3 types has the most variability?  Which has the least?
 
 ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
 
 
-### Plot 4
+### Plot 4 - Global Active Power, Voltage, Sub Metering 1,2,3 and Global Reactive Power over date/time
+Goal: examine use of household energy for two days in Feb 2007 with focus usage of global active power, voltage, sub metering and
+global reactive power.  Active power is power that does work and is voltage  times current measured in watts. Our measures should show 
+a relationship between active power and voltage. Reactive power does not provide useful work, but it is essential for AC transmission
+and distribution systems, motors, and many other types of customer loads. Measures should show that HH items with motors consume use 
+more reactive power.
+
+Questions:
+
+* Do all the measures show a similar usage pattern over a day?
+
+* Does active power usage correlate with voltage useage?
+
+* Does reactive power usage match usage for a specific sub metering type?
+
+* What is the relationship of voltage to reactive power use in a day?
+
 
 ![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
-
