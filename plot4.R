@@ -2,11 +2,17 @@
 ##      
 ##      Goal: examine use of household energy for two days in Feb 2007 with
 ##      focus usage of global active power, voltage, sub metering and
-##      global reactive power
+##      global reactive power.  Active power is power that does work and is 
+##      voltage  times current measured in watts. Our measures should show 
+##      a relationship between active power and voltage. Reactive power does not 
+##      provide useful work, but it is essential for AC transmission
+##      and distribution systems, motors, and many other types of customer 
+##      loads. Measures should show that HH items with motors consume use 
+##      more reactive power.
 ##      Questions:
 ##      Do all the measures show a similar usage pattern over a day?
 ##      Does active power usage correlate with voltage useage?
-##      Do reactive power increase correlate to a specific sub metering type?
+##      Does reactive power usage match usage for a specific sub metering type?
 ##      What is the relationship of voltage to reactive power use in a day?
 ##
 ##      External files used: 
@@ -70,7 +76,8 @@
         febdata$Sub_metering_3[febdata$Sub_metering_3 == "?"] <- NA
 
 
-##Create Line plot to png file
+##      Create 4 different line charts and plot to png file.  User mfrow to have 
+##      2 charts on each row
 
         png(file = "plot4.png", height = 480, width = 480, units = "px")
         
