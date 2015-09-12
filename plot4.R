@@ -1,6 +1,14 @@
-##      Exploratory Data Analysis Course Project 1 - Plot 1
+##      Exploratory Data Analysis Course Project 1 - Plot 4
 ##      
-##      Goal: examine use of household energy for two days in Feb 2007
+##      Goal: examine use of household energy for two days in Feb 2007 with
+##      focus usage of global active power, voltage, sub metering and
+##      global reactive power
+##      Questions:
+##      Do all the measures show a similar usage pattern over a day?
+##      Does active power usage correlate with voltage useage?
+##      Do reactive power increase correlate to a specific sub metering type?
+##      What is the relationship of voltage to reactive power use in a day?
+##
 ##      External files used: 
 ##       - GitHub repository: https://github.com/rdpeng/ExData_Plotting1
 ##       - UC Irvine Machine Learning Repository: 
@@ -11,7 +19,10 @@
 ##       - Date: Date in format dd/mm/yyyy
 ##       - Time: time in format hh:mm:ss
 ##       - Global_active_power: HH global minute-averaged active power (kw)
-##       - Global_reactive_power: HHglobal minute-averaged reactive power (kw)
+##              - direct current (DC) power that does work
+##       - Global_reactive_power: HH global minute-averaged reactive power (kw)
+##              - essential for AC transmission and distribution systems,
+##                motors, and many other types of customer loads
 ##       - Voltage: minute-averaged voltage (in volt)
 ##       - Global_intensity: HH global minute-averaged current intensity (amps)
 ##       - Sub_metering_1: kitchen with dishwasher, oven, microwave (active watt-hr) 
@@ -19,15 +30,18 @@
 ##       - Sub_metering_3: electric water heater, air cond (active watt-hr)
 ##
 ##      The script does the following
-##      1 - loads data taking into account
-##              - the size of data requireing ~150 MB memory
-##              - we will only use data from 2007-02-01 and 2007-02-02.
-##              - use colclasses to speed the read time
-##              - header is true, sep is ;, comment.char="";
-##              - create DateTime variable using lubridate
-##              - missing values are coded at ? so change to NA
-##      2 - Makes plot using the base plotting system and saves to PNG
-##          file 480x480 named plot1.png
+##      1 - uses read.csv.sql to load data for Feb 1, 2007 and Feb 2, 2007
+##              - the size of data requires ~150 MB memory
+##              - header is true, sep is ;
+##      2 - creates variable of date and time using lubridate
+##      3 - changes missing values coded as "?" to NA
+##      4 - Makes 4 different charts using the base plotting system
+##               - line graph plot of Global Active Power over datetime  
+##               - line graph plot of Voltage over datetime  
+##               - line chart of the 3 Sub metering variables over datetime  
+##               - line graph plot of Global Active Power over datetime  
+##      5 - Plots to device: PNG file 480x480 named plot3.png
+##      
 ##      
 ##      
 ##      Setting up work environment
@@ -61,7 +75,7 @@
         png(file = "plot4.png", height = 480, width = 480, units = "px")
         
         
-        par( mfrow = c( 2, 2))
+        par(mfrow = c( 2, 2))
         
         with(febdata, plot(mix,Global_active_power, type = "l", 
                            xlab = " ",

@@ -1,6 +1,11 @@
 ##      Exploratory Data Analysis Course Project 1 - Plot 1
 ##      
-##      Goal: examine use of household energy for two days in Feb 2007
+##      Goal and questions: examine use of household energy for two days 
+##      in Feb 2007 to understand the Global active power usage.  
+##      Which kilowatt level is most frequent?  
+##      Which kilowatt level is the next most frequent?
+##      How frequent is the use of kilowatt level above 4?
+##
 ##      External files used: 
 ##       - GitHub repository: https://github.com/rdpeng/ExData_Plotting1
 ##       - UC Irvine Machine Learning Repository: 
@@ -19,15 +24,13 @@
 ##       - Sub_metering_3: electric water heater, air cond (active watt-hr)
 ##
 ##      The script does the following
-##      1 - loads data taking into account
-##              - the size of data requireing ~150 MB memory
-##              - we will only use data from 2007-02-01 and 2007-02-02.
-##              - use colclasses to speed the read time
-##              - header is true, sep is ;, comment.char="";
-##              - create DateTime variable using lubridate
-##              - missing values are coded at ? so change to NA
-##      2 - Makes plot using the base plotting system and saves to PNG
-##          file 480x480 named plot1.png
+##      1 - uses read.csv.sql to load data for Feb 1, 2007 and Feb 2, 2007
+##              - the size of data requires ~150 MB memory
+##              - header is true, sep is ;
+##      2 - creates variable of date and time using lubridate
+##      3 - change missing values coded as "?" to NA
+##      4 - Makes hitogram of Global Active Power using the base plotting system
+##      5 - Plots to device: PNG file 480x480 named plot1.png
 ##      
 ##      
 ##      Setting up work environment
@@ -43,10 +46,12 @@
                         where date = '2/2/2007' or date = '1/2/2007' ",
                         header = TRUE, 
                         sep = ';')
-##      Converting date and time to correct classs
+##      Creating datetime variable for use in charts. 
+##      keep Date and Time as char to allow paste and then use 
+##      lubridate fuction 'parse_date_time' to create variable
         febdata$mix <- paste(febdata$Date, febdata$Time)
         febdata$mix <- parse_date_time(febdata$mix, 'dmY HMS')
-##      Setting ? to 'NA'. Visial inspection shows we have none in file for selected days
+##      Setting ? to 'NA' 
         febdata$Global_active_power[febdata$Global_active_power == "?"] <- NA
         febdata$Global_reactive_power[febdata$Global_reactive_power == "?"] <- NA
         febdata$Global_intensity[febdata$Global_intensity == "?"] <- NA
@@ -55,9 +60,14 @@
         febdata$Sub_metering_2[febdata$Sub_metering_2 == "?"] <- NA
         febdata$Sub_metering_3[febdata$Sub_metering_3 == "?"] <- NA
 
-
-##      Hist plot to png file
+##      Create histogram of Global Active Power plot to png file
         png(file = "plot1.png", height = 480, width = 480, units = "px")
-        hist(febdata$Global_active_power, col = "red", breaks = 12, main = "Global Active Power",
-                ylab = "Global Active Power (kilowatts)")
+        hist(febdata$Global_active_power, 
+             col = "red", 
+             breaks = 12, 
+             main = "Global Active Power",
+             xlab = "Global Active Power (kilowatts)")
+             ylab = "Frequency"
+        
+        
         dev.off()
